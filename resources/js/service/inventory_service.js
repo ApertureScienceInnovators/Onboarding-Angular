@@ -2,7 +2,8 @@
 
 angular.module('myApp').factory('InventoryService', ['$http', '$q', function($http, $q){
 
-   var REST_SERVICE_URI = '/api/v1/inventory';
+   var server = 'http://192.168.8.8:5000/';
+   var REST_SERVICE_URI = `${server}/api/v1/inventory`;
 
    var factory = {
            getInventory: getInventory,
