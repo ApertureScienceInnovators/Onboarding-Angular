@@ -2,8 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Inventory</title>
-<link rel="stylesheet" href="css/app.css" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/app.css" />
 
     <!-- frameworks -->
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.js"></script>
@@ -27,55 +27,70 @@
             </div>
             Coffee: <span id="currentCoffee" ng-bind="ctrl.inventoryMaster.coffee"></span><br /> 
             Milk: <span id="currentMilk" ng-bind="ctrl.inventoryMaster.milk"></span><br />
+            Sugar: <span id="" ></span><br />
+            Chocolate: <span id="" ></span><br />
+
         </div>
     
 
         <div class="panel-heading">
-                <span class="lead">Update Inventory Form </span>
-            </div>
-            <div class="formcontainer">
-                <form ng-submit="ctrl.submit()" name="addInventoryForm"
-                    class="form-horizontal">
-                    <div class="row">
-                        <div class="form-group col-md-12">
-                            <label class="col-md-2 control-lable" for="file">Coffee</label>
-                            <div class="col-md-7">
-                                <input type="text" ng-model="ctrl.inventory.coffee"
-                                    name="coffee" class="coffee form-control input-sm"
-                                    placeholder="Enter amount of coffee" required="0" />
-                                <div class="has-error" ng-show="addInventoryForm.$dirty">
-                                    <span ng-show="addInventoryForm.coffee.$error.required">This
-                                        is a required field</span> <span
-                                        ng-show="addInventoryForm.coffee.$error.min">Minimum
-                                        amount is 0</span> <span ng-show="addInventoryForm.coffee.$invalid">This
-                                        field is invalid </span>
-                                </div>
+            <span class="lead">Update Inventory Form </span>
+        </div>
+        <div class="formcontainer">
+            <form ng-submit="ctrl.submit()" name="addInventoryForm"
+                class="form-horizontal">
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-lable" for="file">Coffee</label>
+                        <div class="col-md-7">
+                            <input type="text" ng-model="ctrl.inventory.coffee"
+                                name="coffee" class="coffee form-control input-sm"
+                                placeholder="Enter amount of coffee" required="0" />
+                            <div class="has-error" ng-show="addInventoryForm.$dirty">
+                                <span ng-show="addInventoryForm.coffee.$error.required">This
+                                    is a required field</span> <span
+                                    ng-show="addInventoryForm.coffee.$error.min">Minimum
+                                    amount is 0</span> <span ng-show="addInventoryForm.coffee.$invalid">This
+                                    field is invalid </span>
                             </div>
                         </div>
                     </div>
+                </div>
 
-					<div class="row">
-						<div class="form-actions floatRight">
-							<input type="submit" value="Submit"
-								class="btn btn-primary btn-sm"
-								ng-disabled="addInventoryForm.$invalid" />
-							<button type="button" ng-click="ctrl.reset()"
-								class="btn btn-warning btn-sm"
-								ng-disabled="addInventoryForm.$pristine">Reset Form</button>
-						</div>
-					</div>                    
-                </form>
-            </div>
-
-            <div ng-show="success">Inventory Successfully Updated</div>
-            <div ng-show="failure">Error while updating inventory.</div>
+                <div class="row">
+                    <div class="form-actions floatRight">
+                        <input type="submit" value="Submit"
+                            class="btn btn-primary btn-sm"
+                            ng-disabled="addInventoryForm.$invalid" />
+                        <button type="button" ng-click="ctrl.reset()"
+                            class="btn btn-warning btn-sm"
+                            ng-disabled="addInventoryForm.$pristine">Reset Form</button>
+                    </div>
+                </div>                    
+            </form>
         </div>
 
+        <div class="panel-heading">
+            <span class="lead">Order History</span>
+            <hr/>
+            <md-list>
+                <md-list-item class="md-2-line" ng-repeat="item in ctrl.orders">
+                  <div class="md-list-item-text">
+                    <h5>Order #{{item.orderNumber}}</h5>
+                    <p>Ordered: {{item.description}}</p>
+                  </div>
+                </md-list-item>
+            </md-list>
+        </div>
+
+
+        <div ng-show="success">Inventory Successfully Updated</div>
+        <div ng-show="failure">Error while updating inventory.</div>
+
+
         <a href="/index">Home</a>
-    
+
     </div>
-
-
 
 </body>
 
