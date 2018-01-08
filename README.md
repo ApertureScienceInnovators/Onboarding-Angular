@@ -102,7 +102,7 @@ In addition to a controller, you will need a service provider, which provides yo
 
 Because JavaScript can have asynchronous method calls, we need a way to have code that responses to events. One method is to use *promises*, which are objects with a callback that can be used to handle asynchronous methods. Angular, uses `$q`, which provides a promise implementation that can be either resolved (completed) or rejected (error).
 
-```
+```javascript
    function getInventory() {
        var deferred = $q.defer();
        $http.get(REST_SERVICE_URI)
