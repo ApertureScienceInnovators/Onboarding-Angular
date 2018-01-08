@@ -21,7 +21,20 @@ Coffee: <span id="currentCoffee" ng-bind="ctrl.inventoryMaster.coffee"></span><b
 Milk: <span id="currentMilk" ng-bind="ctrl.inventoryMaster.milk"></span><br />
 ```
 
-For example, the `ng-bind` attribute, will tell Angular to set the value of "currentCoffee" span's text node, to be equal to the value of `ctrl.inventoryMaster.coffee`. If that value is updated in the ViewModel, then the span's text will be updated and vice versa.
+For example, the `ng-bind` attribute, will tell Angular to set the value of "currentCoffee" span's text node, to be equal to the value of `ctrl.inventoryMaster.coffee`. If that value is updated in the ViewModel (controller), then the span's text will be updated and vice versa.
+
+Data-binding also works for lists. Using the `ng-repeat` directive, it is possible to bind everything in the orders list, to dynamically generated items in html, contained inside a `<md-list></md-list>`. Within, a `<md-list-item></md-list-item>`, it is possible to refer to the individuals object's properties, e.g., `item.orderNumber`.
+
+```html
+<md-list>
+    <md-list-item class="md-2-line" ng-repeat="item in ctrl.orders">
+        <div class="md-list-item-text">
+        <h5>Order #{{item.orderNumber}}</h5>
+        <p>Ordered: {{item.description}}</p>
+        </div>
+    </md-list-item>
+</md-list>
+```
 
 Databinding to inputs in HTML Forms can be more complicated. Here is an example for binding to the input field for coffee. There are multiple features being handled by angular: detection of input changes (dirty state), error validation, and error feedback.
 
@@ -137,8 +150,10 @@ To switch to the real REST service, simply comment out the mock response calls.
 
 2. Extend the implementation of "Order History". Whenever the user adds a new order, update the orders list in inventory_service.js to store a string, so that the order history can be displayed as such:
 
-   * Ordered: coffee: 99, milk: 99, sugar: 99, chocolate: 99
-   * Ordered: coffee: 1, milk, 1, sugar, 1, chocolate: 1
+   * Order #1<br/>
+     Ordered: coffee: 99, milk: 99, sugar: 99, chocolate: 99
+   * Order #2<br/>
+     Ordered: coffee: 1, milk, 1, sugar, 1, chocolate: 1
 
 ## CoffeeMaker: Edit Recipe Task
 
