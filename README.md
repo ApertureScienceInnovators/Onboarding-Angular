@@ -4,13 +4,13 @@
 
 > Note: We are using Angular version 1.  There are later versions of Angular, but they involve a much more complicated configuration.  To simplify configuration and increase stability, we decided to go with an earlier version.
 
-For this workshop, we'll first discuss concepts related to angular, and then work on tasks for updating an incomplete version of the coffeemaker app, in order to better understand angular.
+For this workshop, we'll first discuss concepts related to Angular, and then work on tasks for updating an incomplete version of the coffeemaker app, in order to better understand Angular.
 
 ![coffeemaker-app](img/angular-coffeemaker.png)
 
 ## Concepts
 
-Angular 1 essentially supports a [MVVM (Model-View-ViewModel) architecture](https://msdn.microsoft.com/en-us/library/hh848246.aspx), essentially, a UI architecture where changes are synchronized between the view and model using *databinding*, an automatic way of updating the view whenever the model changes, as well as updating the model whenever the view changes. A **ViewModel** serves as an intermediary, allowing presentation state and behavior to react to changes in the view or model. This is distinct from other frameworks such as, React and Angular 2, which adopt a component-based model architecture.
+Angular 1 supports a [MVVM (Model-View-ViewModel) architecture](https://msdn.microsoft.com/en-us/library/hh848246.aspx), essentially, a UI architecture where changes are synchronized between the view and model using *databinding*, an automatic way of updating the view whenever the model changes, as well as updating the model whenever the view changes. A **ViewModel** serves as an intermediary, allowing presentation state and behavior to react to changes in the view or model. This is distinct from other frameworks, such as React and Angular 2, which adopt a component-based model architecture.
 
 ### Databinding
 
@@ -21,9 +21,9 @@ Coffee: <span id="currentCoffee" ng-bind="ctrl.inventoryMaster.coffee"></span><b
 Milk: <span id="currentMilk" ng-bind="ctrl.inventoryMaster.milk"></span><br />
 ```
 
-For example, the `ng-bind` attribute, will tell Angular to set the value of "currentCoffee" span's text node, to be equal to the value of `ctrl.inventoryMaster.coffee`. If that value is updated in the ViewModel (controller), then the span's text will be updated and vice versa.
+For example, the `ng-bind` attribute will tell Angular to set the value of the `currentCoffee` span's text node to be equal to the value of `ctrl.inventoryMaster.coffee`. If that value is updated in the ViewModel (controller), then the span's text will be updated automatically and vice versa.
 
-Data-binding also works for lists. Using the `ng-repeat` directive, it is possible to bind everything in the orders list, to dynamically generated items in html, contained inside a `<md-list></md-list>`. Within, a `<md-list-item></md-list-item>`, it is possible to refer to the individuals object's properties, e.g., `item.orderNumber`.
+Databinding also works for lists. Using the `ng-repeat` directive, it is possible to bind everything in the orders list to dynamically generated items in html, contained inside a `<md-list></md-list>`. Within, a `<md-list-item></md-list-item>`, it is possible to refer to the individuals object's properties, e.g., `item.orderNumber`.
 
 ```html
 <md-list>
@@ -36,7 +36,7 @@ Data-binding also works for lists. Using the `ng-repeat` directive, it is possib
 </md-list>
 ```
 
-Databinding to inputs in HTML Forms can be more complicated. Here is an example for binding to the input field for coffee. There are multiple features being handled by angular: detection of input changes (dirty state), error validation, and error feedback.
+Databinding to inputs in HTML Forms can be more complicated. Here is an example for binding to the input field for coffee. There are multiple features being handled by Angular: detection of input changes (dirty state), error validation, and error feedback.
 
 ```html
 <div class="form-group col-md-12">
@@ -62,7 +62,7 @@ Databinding to inputs in HTML Forms can be more complicated. Here is an example 
 
 Angular provides other annotations to help manage the application's behavior.
 
-The main functionality of the page is between the `body` tags. The opening `body` tag contains `ng-app`, which means that the JavaScript is active over the given portion of the code enclosed by the tag.  By putting `ng-app` in `body`, the entire page is enabled for JavaScript.  Setting the `class` attribute to `ng-cloak` means that the raw HTML will not be displayed in it's un-compiled form.  This reduces a flicker effect while the page loads.
+The main functionality of the page is contained between the `body` tags. The opening `body` tag contains `ng-app`, which means that the JavaScript is active over the given portion of the code enclosed by the tag.  By putting `ng-app` in `body`, the entire page support's Angular's JavaScript directives.  Setting the `class` attribute to `ng-cloak` means that the raw HTML will not be displayed in it's uncompiled form.  This reduces the flicker effect while the page loads.
 
 ```html
 <body ng-app="myApp" class="ng-cloak">
@@ -71,10 +71,10 @@ The main functionality of the page is between the `body` tags. The opening `body
 Below is a description of the various Angular attributes:
 
   * [`ng-contoller`](https://docs.angularjs.org/api/ng/directive/ngController): Adds a controller that's defined in JavaScript.  `ctrl` is the name used in the rest of the page to refer to the controller.
-  * [`ng-submit`](https://docs.angularjs.org/api/ng/directive/ngSubmit): connects the submit action of a form to a function in the controller.
-  * [`ng-model`](https://docs.angularjs.org/api/ng/directive/ngModel): connects an input field to a field in the controller.
-  * [`ng-show`](https://docs.angularjs.org/api/ng/directive/ngShow): determines if an element is displayed or not.  In the example here, the error message will only show if the form is `$dirty` (or has been interacted with by a user).  The error message displayed depends on if there was an `$error` or `$invalid` input.
-  * [`ng-disabled`](https://docs.angularjs.org/api/ng/directive/ngDisabled): disables an element from editing by a user.  In this example, the Submit button is disabled if there are invalid inputs.  The Reset Form button is disabled if the form is `$pristine` where the user hasn't yet interacted with it.
+  * [`ng-submit`](https://docs.angularjs.org/api/ng/directive/ngSubmit): Connects the submit action of a form to a function in the controller.
+  * [`ng-model`](https://docs.angularjs.org/api/ng/directive/ngModel): Connects an input field to a field in the controller.
+  * [`ng-show`](https://docs.angularjs.org/api/ng/directive/ngShow): Determines if an element is displayed or not.  In the example here, the error message will only show if the form is `$dirty` (or has been interacted with by a user).  The error message displayed depends on if there was an `$error` or `$invalid` input.
+  * [`ng-disabled`](https://docs.angularjs.org/api/ng/directive/ngDisabled): Disables an element from editing by a user.  In this example, the Submit button is disabled if there are invalid inputs.  The Reset Form button is disabled if the form is `$pristine` where the user hasn't yet interacted with it.
 
 ### Angular Controller/Code-Behind
 
@@ -113,7 +113,7 @@ And can provide logic for updating the properties:
 
 In addition to a controller, you will need a service provider, which provides your controller with values from your model (db). Usually, this is implemented as http requests to a REST API. 
 
-Because JavaScript can have asynchronous method calls, we need a way to have code that responses to events. One method is to use *promises*, which are objects with a callback that can be used to handle asynchronous methods. Angular, uses `$q`, which provides a promise implementation that can be either resolved (completed) or rejected (error).
+Because JavaScript can have asynchronous method calls, we need a way to have code that responses to events. One method is to use *promises*, which are objects with a callback that can be used to handle asynchronous methods. Angular uses `$q`, which provides a promise implementation that can be either resolved (completed successfully) or rejected (failed with an error).
 
 ```javascript
    function getInventory() {
@@ -132,7 +132,7 @@ Because JavaScript can have asynchronous method calls, we need a way to have cod
    } 
 ```
 
-When building new angular pages, you may not yet have a fully functional REST service working. Indeed, this code is currently using a mock implementation of a REST service, using [`$httpBackend`](https://chariotsolutions.com/blog/post/angularjs-corner-ngmock-ngmocke2e-libraries/) which enables you to work on a web page until a real REST service is ready. This essentially will listen for requests to certain pages, and return back mock objects in response.
+When building new Angular pages, you may not yet have a fully functional REST service working. Indeed, this code is currently using a mock implementation of a REST service, using [`$httpBackend`](https://chariotsolutions.com/blog/post/angularjs-corner-ngmock-ngmocke2e-libraries/) which enables you to work on a web page until a real REST service is ready. This essentially will listen for requests to certain pages, and return back mock objects in response.
 
 ```javascript
    var mockInventory = {coffee: 99, milk: 99};
@@ -157,7 +157,7 @@ To switch to the real REST service, simply comment out the mock response calls.
 
 ## CoffeeMaker: Edit Recipe Task
 
-The angular templates for CoffeeMaker are in `src/main/resources/templates/`.  You can examine the `recipe.html` template which supports the add recipe functionality as a source of inspiration for the edit recipe functionality.
+The Angular templates for CoffeeMaker are in `src/main/resources/templates/`.  You can examine the `recipe.html` template which supports the add recipe functionality as a source of inspiration for the edit recipe functionality.
 
-After this workshop, you should be able to extend CoffeeMaker to have a new Edit Recipe Form, using angular, by creating an initial mock service implementation, before you complete a REST service for retrieving the real values from the database.
+After this workshop, you should be able to extend CoffeeMaker to have a new Edit Recipe Form, using Angular, by creating an initial mock service implementation before you complete a REST service for retrieving the real values from the database.
 
