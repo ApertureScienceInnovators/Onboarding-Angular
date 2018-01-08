@@ -2,7 +2,7 @@
 
 [AngularJS](https://angularjs.org/) is a JavaScript framework to simplify the development of dynamic web applications by using declarative html annotations that bind to models declared in JavaScript.
 
-Note: We are using Angular version 1.  There are later versions of Angular, but they involve a much more complicated configuration.  To simplify configuration and increase stability, we decided to go with an earlier version.
+> Note: We are using Angular version 1.  There are later versions of Angular, but they involve a much more complicated configuration.  To simplify configuration and increase stability, we decided to go with an earlier version.
 
 For this workshop, we'll first discuss concepts related to angular, and then work on tasks for updating an incomplete version of the coffeemaker app, in order to better understand angular.
 
