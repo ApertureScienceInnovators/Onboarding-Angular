@@ -70,7 +70,7 @@ The main functionality of the page is contained between the `body` tags. The ope
 
 Below is a description of the various Angular attributes:
 
-  * [`ng-contoller`](https://docs.angularjs.org/api/ng/directive/ngController): Adds a controller that's defined in JavaScript.  `ctrl` is the name used in the rest of the page to refer to the controller.
+  * [`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController): Adds a controller that's defined in JavaScript.  `ctrl` is the name used in the rest of the page to refer to the controller.
   * [`ng-submit`](https://docs.angularjs.org/api/ng/directive/ngSubmit): Connects the submit action of a form to a function in the controller.
   * [`ng-model`](https://docs.angularjs.org/api/ng/directive/ngModel): Connects an input field to a field in the controller.
   * [`ng-show`](https://docs.angularjs.org/api/ng/directive/ngShow): Determines if an element is displayed or not.  In the example here, the error message will only show if the form is `$dirty` (or has been interacted with by a user).  The error message displayed depends on if there was an `$error` or `$invalid` input.
@@ -111,7 +111,7 @@ And can provide logic for updating the properties:
 
 ### Service/Mocking
 
-In addition to a controller, you will need a service provider, which provides your controller with values from your model (db). Usually, this is implemented as http requests to a REST API. 
+In addition to a controller, you will need a service provider, which provides your controller with values from your model (db). Usually, this is implemented as HTTP requests to a REST API. 
 
 Because JavaScript can have asynchronous method calls, we need a way to have code that responses to events. One method is to use *promises*, which are objects with a callback that can be used to handle asynchronous methods. Angular uses `$q`, which provides a promise implementation that can be either resolved (completed successfully) or rejected (failed with an error).
 
@@ -148,12 +148,12 @@ To switch to the real REST service, simply comment out the mock response calls.
 
 1. Update the index.html to allow add display and input bindings for sugar, and chocolate. NOTE: You will also need to update inventory_service.js to update to mockInventory to handle retrieving and setting sugar and chocolate.
 
-2. Extend the implementation of "Order History". Whenever the user adds a new order, update the orders list in inventory_service.js to store a string, so that the order history can be displayed as such:
+2. Extend the implementation of "Inventory History". Whenever the user updates the inventory, update the Inventory History list in inventory_service.js to store a string, so that the inventory history can be displayed as such:
 
-   * Order #1<br/>
-     Ordered: coffee: 99, milk: 99, sugar: 99, chocolate: 99
-   * Order #2<br/>
-     Ordered: coffee: 1, milk, 1, sugar, 1, chocolate: 1
+   * Update #1<br/>
+     Updated: coffee: 99, milk: 99, sugar: 99, chocolate: 99
+   * Update #2<br/>
+     Updated: coffee: 1, milk, 1, sugar, 1, chocolate: 1
 
 ## CoffeeMaker: Edit Recipe Task
 
