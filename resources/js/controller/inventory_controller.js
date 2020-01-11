@@ -4,6 +4,8 @@ angular.module('myApp').controller('InventoryController', ['$scope', 'InventoryS
    var self = this;
    self.inventory={coffee:'', milk:'', sugar:'', chocolate:''};
    self.inventoryMaster = {coffee:'', milk:'', sugar:'', chocolate:''};
+   
+   self.orderNumber = 1;
 
    self.orders = [{orderNumber: 1, description: 'coffee: 99, milk: 99, sugar: 99, chocolate: 99' }];
    self.submit = submit;
@@ -27,6 +29,8 @@ angular.module('myApp').controller('InventoryController', ['$scope', 'InventoryS
    {
         $scope.success = false;
         $scope.failure = false;
+		
+		addOrder(inventory);
         
         InventoryService.updateInventory(inventory)
         .then(getInventory,
@@ -45,6 +49,15 @@ angular.module('myApp').controller('InventoryController', ['$scope', 'InventoryS
        console.log('Inventory updated');
        
        reset();
+   }
+   
+   
+   function addOrder(inventory){
+	   self.orders.push({
+		   orderNumber: ++self.orderNumber,
+	       description: `coffee: ${inventory.coffee}, milk: ${inventory.milk}, sugar: ${inventory.sugar}, chocolate: ${inventory.chocolate}`
+	   });
+	   
    }
 
 

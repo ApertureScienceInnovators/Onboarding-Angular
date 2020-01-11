@@ -27,8 +27,8 @@
             </div>
             Coffee: <span id="currentCoffee" ng-bind="ctrl.inventoryMaster.coffee"></span><br /> 
             Milk: <span id="currentMilk" ng-bind="ctrl.inventoryMaster.milk"></span><br />
-            Sugar: <span id="" ></span><br />
-            Chocolate: <span id="" ></span><br />
+            Sugar: <span id="currentSugar" ng-bind="ctrl.inventoryMaster.sugar"></span><br />
+            Chocolate: <span id="currentChocolate" ng-bind="ctrl.inventoryMaster.chocolate"></span><br />
 
         </div>
     
@@ -56,6 +56,70 @@
                         </div>
                     </div>
                 </div>
+				
+				
+				 <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-label" for="file">Milk</label>
+                        <div class="col-md-7">
+                            <input type="text" ng-model="ctrl.inventory.milk"
+                                name="milk" class="milk form-control input-sm"
+                                placeholder="Enter amount of milk" required="0" />
+                            <div class="has-error" ng-show="addInventoryForm.$dirty">
+                                <span ng-show="addInventoryForm.milk.$error.required">This
+                                    is a required field</span> <span
+                                    ng-show="addInventoryForm.milk.$error.min">Minimum
+                                    amount is 0</span> <span ng-show="addInventoryForm.milk.$invalid">This
+                                    field is invalid </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				
+				
+				
+				 <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-label" for="file">Sugar</label>
+                        <div class="col-md-7">
+                            <input type="text" ng-model="ctrl.inventory.sugar"
+                                name="sugar" class="sugar form-control input-sm"
+                                placeholder="Enter amount of sugar" required="0" />
+                            <div class="has-error" ng-show="addInventoryForm.$dirty">
+                                <span ng-show="addInventoryForm.sugar.$error.required">This
+                                    is a required field</span> <span
+                                    ng-show="addInventoryForm.sugar.$error.min">Minimum
+                                    amount is 0</span> <span ng-show="addInventoryForm.sugar.$invalid">This
+                                    field is invalid </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				
+				
+				
+				 <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-label" for="file">Chocolate</label>
+                        <div class="col-md-7">
+                            <input type="text" ng-model="ctrl.inventory.chocolate"
+                                name="chocolate" class="chocolate form-control input-sm"
+                                placeholder="Enter amount of chocolate" required="0" />
+                            <div class="has-error" ng-show="addInventoryForm.$dirty">
+                                <span ng-show="addInventoryForm.chocolate.$error.required">This
+                                    is a required field</span> <span
+                                    ng-show="addInventoryForm.chocolate.$error.min">Minimum
+                                    amount is 0</span> <span ng-show="addInventoryForm.chocolate.$invalid">This
+                                    field is invalid </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				
+				
+				
+				
+				
 
                 <div class="row">
                     <div class="form-actions floatRight">

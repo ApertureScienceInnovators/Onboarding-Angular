@@ -6,7 +6,7 @@ angular.module('myApp').factory('InventoryService', ['$http', '$q', '$httpBacken
 
    // Mock interception of REST api calls.
    // Comment this section, and it will attempt to use real api
-   var mockInventory = {coffee: 99, milk: 99};
+   var mockInventory = {coffee: 99, milk: 99, sugar: 99, chocolate: 99};
    $httpBackend.whenRoute('GET', '/api/v1/inventory')
    .respond(function(method, url, data, headers, params) {
      return [200, mockInventory];
@@ -16,6 +16,8 @@ angular.module('myApp').factory('InventoryService', ['$http', '$q', '$httpBacken
      let obj = JSON.parse(data);
      mockInventory.coffee += parseInt(obj.coffee);
      mockInventory.milk +=  parseInt(obj.milk);
+	 mockInventory.sugar += parseInt(obj.sugar);
+	 mockInventory.chocolate += parseInt(obj.chocolate);
      return [201, mockInventory];
    });
    // end mock interception
